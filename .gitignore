@@ -1,0 +1,5 @@
+.DS_Store
+.vscode/
+images/
+*.png
+*.out
