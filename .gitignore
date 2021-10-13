@@ -1,5 +1,5 @@
 .DS_Store
 .vscode/
 images/
-*.png
+sequence/
 *.out

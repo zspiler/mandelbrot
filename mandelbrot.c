@@ -6,6 +6,9 @@
 #include <sys/time.h>
 #include <math.h>
 #include <pthread.h>
+       
+#include <unistd.h>
+
 
 const int width = 1750;
 const int height = 1000;
@@ -135,8 +138,7 @@ struct ThreadArgs {
 };
 
 
-void *draw_multithread(void *vargp) {
-
+void *draw_multithread(void *vargp) {    
     struct ThreadArgs* args = ((struct ThreadArgs*)vargp);
 
     const double fromR = focus_x - (3.5 * zoom)/2; 
@@ -202,7 +204,7 @@ int main() {
         args->end_y = i * height/num_of_threads + height/num_of_threads;
         args->cr = cr;
         args->image = &image;
-        
+    
         pthread_create(&threads[i], NULL, draw_multithread, args);
     }
     free(args);
